@@ -12,7 +12,7 @@ namespace GoodBookNook.Controllers
         Book book;
         public BookController()
         {
-            /*
+
             book = new Book()
             {
                 Title = "The Fellowship of the Ring",
@@ -21,12 +21,12 @@ namespace GoodBookNook.Controllers
             book.Authors.Add(new Author {
                 Name = "J.R.R. Tolkein" }
             );
-            */
+            BookRepository.AddBook(book);
         }
 
         public IActionResult Index()
         {
-            return View(book);
+            return View(BookRepository.Books);
         }
 
         public IActionResult AddBook()
@@ -35,13 +35,13 @@ namespace GoodBookNook.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddBook(string Title,
-            string Author,string PubDate)
+        public RedirectToActionResult AddBook(string title,
+                                              string author,string pubDate)
         {
             book = new Book();
-            book.Title = Title;
-            book.Authors.Add(new Author() { Name = Author });
-            book.PubDate = DateTime.Parse(PubDate);
+            book.Title = title;
+            book.Authors.Add(new Author() { Name = author });
+            book.PubDate = DateTime.Parse(pubDate);
             return RedirectToAction("Index");
         }
     }
