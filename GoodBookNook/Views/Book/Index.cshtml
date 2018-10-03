@@ -13,9 +13,10 @@
 <body>
     List of books:
     @foreach (Book book in Model) {
-        @book.Title; <br>
-        @book.Authors[0].Name; <br>
-        @book.PubDate; <br>
+        @book.Title; <br />
+        @book.Authors[0].Name; <br />
+        @book.PubDate; <br />
+        <br />
     }
     <br>
     <a href="AddBook">Add a book</a>

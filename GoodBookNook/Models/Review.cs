@@ -9,6 +9,6 @@ namespace GoodBookNook.Models
     {
         public string ReviewText { get; set; }
         public Book ReviewedBook { get; set; }
-        public User Reviewr { get; set; }
+        public User Reviewer { get; set; }
     }
 }

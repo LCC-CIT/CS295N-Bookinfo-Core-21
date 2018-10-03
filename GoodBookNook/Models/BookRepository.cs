@@ -7,7 +7,7 @@ namespace GoodBookNook.Models
     {
         private static List<Book> books = new List<Book>();
 
-        public static IEnumerable<Book> Books { get { return Books; } }
+        public static List<Book> Books { get { return books; } }
         public static void AddBook(Book book)
         {
             books.Add(book);
