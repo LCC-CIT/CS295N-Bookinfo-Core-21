@@ -1,0 +1,21 @@
+﻿@model Book
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    List of books:
+    @Model.Title<br>
+    @Model.Authors[0].Name<br>
+    @Model.PubDate<br>
+    <br>
+    <a href="AddBook">Add a book</a>
+</body>
+</html>
