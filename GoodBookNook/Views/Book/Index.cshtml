@@ -1,24 +1,13 @@
-﻿@model List<Book>
-@{
+﻿@{
     Layout = null;
 }
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
     <title>Books and Reviews</title>
 </head>
 <body>
-    List of books:
-    @foreach (Book book in Model)
-    {
-        @book.Title; <br />
-        @book.Authors[0].Name; <br />
-        @book.PubDate; <br />
-        <br />
-    }
-    <br>
-    <p>No reviews yet</p>
+    <p>No books or reviews yet</p>
     <a href="AddBook">Add a book</a><br />
     <a href="/Home">Home</a>
 </body>

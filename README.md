@@ -2,7 +2,8 @@
 This web app was written to demonstrate key concepts in development of ASP.NET Core MVC 2.1 web apps using Visual Studio 2017.
 Each of the following branches represents a development step:
 
-1.Initial: This branch has code with models and minimal controllers and views
+1. Initial: This branch has place-holder views and controllers to minimally support them
+2. DomainModel: Models and a "fake" repository were added as well as view and controller code to minimally test some of the models
 
 ----
 
