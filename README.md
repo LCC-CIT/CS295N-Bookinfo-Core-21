@@ -1,4 +1,4 @@
-# BookInfo ASP.NET Core MVC Web App
+# BookInfo ASP.NET Core 2.1 MVC Web App
 This web app was written to demonstrate key concepts in development of ASP.NET Core MVC 2.1 web apps using Visual Studio 2017.
 Each of the following branches represents a development step:
 
