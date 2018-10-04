@@ -10,7 +10,8 @@ namespace GoodBookNook.Controllers
         Book book;
         public BookController()
         {
-            if (BookRepository.Books.Count == 0)
+            // This is temporary code, just for testing
+            if (BookRepository.Books.Count == 0)  // only do this if it hasn't been done already
             {
                 book = new Book()
                 {
@@ -50,7 +51,7 @@ namespace GoodBookNook.Controllers
             book.Title = title;
             book.Authors.Add(new Author() { Name = author });
             book.PubDate = DateTime.Parse(pubDate);
-            BookRepository.AddBook(book);
+            BookRepository.AddBook(book);  // this is temporary, in the future the data will go in a database
 
             return RedirectToAction("Index");
         }
