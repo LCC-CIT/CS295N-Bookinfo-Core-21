@@ -37,6 +37,11 @@ namespace GoodBookNook.Controllers
             return View();
         }
 
+        public IActionResult Authors()
+        {
+            return View();
+        }
+
         [HttpPost]
         public RedirectToActionResult AddBook(string title,
                                               string author,string pubDate)
