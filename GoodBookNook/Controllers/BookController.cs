@@ -24,12 +24,39 @@ namespace GoodBookNook.Controllers
                 }
                 );
                 BookRepository.AddBook(book);
+
+                book = new Book()
+                {
+                    Title = "Book2",
+                    PubDate = new DateTime(1970, 1, 1)
+                };
+                book.Authors.Add(new Author
+                {
+                    Name = "Author 2"
+                }
+                );
+                Review review = new Review() { ReviewText = "Awesome book!" };
+                book.Reviews.Add(review);
+                BookRepository.AddBook(book);
+
+                book = new Book()
+                {
+                    Title = "Another Book",
+                    PubDate = new DateTime(2000, 1, 1)
+                };
+                book.Authors.Add(new Author
+                {
+                    Name = "Unknown"
+                }
+                );
+                BookRepository.AddBook(book);
             }
         }
 
         public IActionResult Index()
         {
             List<Book> books = BookRepository.Books;
+            books.Sort((b1,b2) => b1.Title.CompareTo(b2.Title));
             return View(books);
         }
 
