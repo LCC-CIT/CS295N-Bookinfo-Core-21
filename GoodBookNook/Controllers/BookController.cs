@@ -2,61 +2,16 @@
 using System.Collections.Generic;
 using GoodBookNook.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Web;
 
 namespace GoodBookNook.Controllers
 {
     public class BookController : Controller
     {
-        Book book;
-        public BookController()
-        {
-            // This is temporary code, just for testing
-            if (BookRepository.Books.Count == 0)  // only do this if it hasn't been done already
-            {
-                book = new Book()
-                {
-                    Title = "The Fellowship of the Ring",
-                    PubDate = new DateTime(1937, 1, 1)
-                };
-                book.Authors.Add(new Author
-                {
-                    Name = "J.R.R. Tolkein"
-                }
-                );
-                BookRepository.AddBook(book);
-
-                book = new Book()
-                {
-                    Title = "Book2",
-                    PubDate = new DateTime(1970, 1, 1)
-                };
-                book.Authors.Add(new Author
-                {
-                    Name = "Author 2"
-                }
-                );
-                Review review = new Review() { ReviewText = "Awesome book!" };
-                book.Reviews.Add(review);
-                BookRepository.AddBook(book);
-
-                book = new Book()
-                {
-                    Title = "Another Book",
-                    PubDate = new DateTime(2000, 1, 1)
-                };
-                book.Authors.Add(new Author
-                {
-                    Name = "Unknown"
-                }
-                );
-                BookRepository.AddBook(book);
-            }
-        }
-
         public IActionResult Index()
         {
             List<Book> books = BookRepository.Books;
-            books.Sort((b1,b2) => b1.Title.CompareTo(b2.Title));
+            books.Sort((b1, b2) => string.Compare(b1.Title, b2.Title, StringComparison.Ordinal));
             return View(books);
         }
 
@@ -72,14 +27,30 @@ namespace GoodBookNook.Controllers
 
         [HttpPost]
         public RedirectToActionResult AddBook(string title,
-                                              string author,string pubDate)
+                                              string author, string pubDate)
         {
-            book = new Book();
-            book.Title = title;
+            Book book = new Book { Title = title };
             book.Authors.Add(new Author() { Name = author });
             book.PubDate = DateTime.Parse(pubDate);
             BookRepository.AddBook(book);  // this is temporary, in the future the data will go in a database
 
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult AddReview(string title)
+        {
+            return View("AddReview", HttpUtility.HtmlDecode(title));
+        }
+
+        [HttpPost]
+        public RedirectToActionResult AddReview(string title, 
+                                                string reviewText,
+                                                string reviewer)
+        {
+            Book book = BookRepository.GetBookByTitle(title);
+            book.Reviews.Add(new Review() {
+                Reviewer = new User() { Name = reviewer }, 
+                ReviewText = reviewText });
             return RedirectToAction("Index");
         }
     }
