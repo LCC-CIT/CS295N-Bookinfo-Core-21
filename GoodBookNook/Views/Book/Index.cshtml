@@ -8,7 +8,10 @@
     <title>Books and Reviews</title>
 </head>
 <body>
-    <h1>Books and Reviews</h1>
+    <h1>Books and Reviews</h1> 
+    <h2>Newest Book</h2>
+    @ViewBag.newestBook
+    <h2>List of Books</h2>
     @foreach (Book b in Model)
     {
        <h2> @b.Title </h2>

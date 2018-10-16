@@ -12,6 +12,7 @@ namespace GoodBookNook.Controllers
         {
             List<Book> books = BookRepository.Books;
             books.Sort((b1, b2) => string.Compare(b1.Title, b2.Title, StringComparison.Ordinal));
+            ViewBag.newestBook = books[books.Count - 1].Title;
             return View(books);
         }
 
