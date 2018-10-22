@@ -9,15 +9,19 @@
 </head>
 <body>
     <h1>Books and Reviews</h1>
+    <h2>Site Stats:</h2>
+    <h3>Newest Book: <i>@ViewData["newestBook"]</i></h3>
+    <h3>Number of Books: @ViewBag.bookCount</h3>
+    <h2>Book List</h2>
     @foreach (Book book in Model)
     {
-        <h2> @book.Title </h2>
+        <h3><i> @book.Title </i></h3>
         @book.Authors[0].Name; <br />
         @book.PubDate; <br />
         <br />
         @if (book.Reviews.Count > 0)
         {
-            <h3>Reviews</h3>
+            <h4>Reviews</h4>
             @foreach (Review r in book.Reviews)
             {
                 @r.ReviewText <br />
