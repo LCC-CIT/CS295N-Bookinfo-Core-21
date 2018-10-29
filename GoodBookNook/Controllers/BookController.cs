@@ -33,7 +33,7 @@ namespace GoodBookNook.Controllers
             book.Authors.Add(new Author() { Name = author });
             book.PubDate = DateTime.Parse(pubDate);
             BookRepository.AddBook(book);  // this is temporary, in the future the data will go in a database
-
+            
             return RedirectToAction("Index");
         }
 
