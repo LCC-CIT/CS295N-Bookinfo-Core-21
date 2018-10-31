@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using GoodBookNook.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
+using GoodBookNook.Repositories;
 
 namespace GoodBookNook.Controllers
 {
     public class BookController : Controller
     {
+        IBookRepository repo;
+        public BookController(IBookRepository r)
+        {
+            repo = r;
+        }
+
         public IActionResult Index()
         {
-            List<Book> books = BookRepository.Books;
+            List<Book> books = repo.Books;
             books.Sort((b1, b2) => string.Compare(b1.Title, b2.Title, StringComparison.Ordinal));
             return View(books);
         }
@@ -32,7 +39,7 @@ namespace GoodBookNook.Controllers
             Book book = new Book { Title = title };
             book.Authors.Add(new Author() { Name = author });
             book.PubDate = DateTime.Parse(pubDate);
-            BookRepository.AddBook(book);  // this is temporary, in the future the data will go in a database
+            repo.AddBook(book);  // this is temporary, in the future the data will go in a database
             
             return RedirectToAction("Index");
         }
@@ -47,7 +54,7 @@ namespace GoodBookNook.Controllers
                                                 string reviewText,
                                                 string reviewer)
         {
-            Book book = BookRepository.GetBookByTitle(title);
+            Book book = repo.GetBookByTitle(title);
             book.Reviews.Add(new Review() {
                 Reviewer = new User() { Name = reviewer }, 
                 ReviewText = reviewText });
