@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,9 +6,11 @@ using System.Threading.Tasks;
 using GoodBookNook.Models;
 using GoodBookNook.Repositories;
 using Microsoft.AspNetCore.Builder;
+=======
+﻿using Microsoft.AspNetCore.Builder;
+>>>>>>> a679d55d34985acb19d33300101d2b9cc382bd42
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
