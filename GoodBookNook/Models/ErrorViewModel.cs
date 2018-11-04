@@ -1,5 +1,3 @@
-using System;
-
 namespace GoodBookNook.Models
 {
     public class ErrorViewModel

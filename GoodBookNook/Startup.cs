@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using GoodBookNook.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,8 +29,18 @@ namespace GoodBookNook
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-                Configuration["Data:GoodBookNook:ConnectionString"]));
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                services.AddDbContext<ApplicationDbContext>(
+                   options => options.UseSqlite(
+                       Configuration["Data:GoodBookNook:SQLiteConnectionString"]));
+            }
+            else
+            {
+                services.AddDbContext<ApplicationDbContext>(
+                    options => options.UseSqlServer(
+                       Configuration["Data:GoodBookNook:ConnectionString"]));
+            }
     
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
