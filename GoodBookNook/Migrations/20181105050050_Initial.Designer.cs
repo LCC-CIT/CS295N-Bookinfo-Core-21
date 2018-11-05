@@ -3,35 +3,35 @@ using System;
 using GoodBookNook;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GoodBookNook.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181104213133_Initial")]
+    [DbContext(typeof(AppDbContext))]
+    [Migration("20181105050050_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
 
             modelBuilder.Entity("GoodBookNook.Models.Author", b =>
                 {
                     b.Property<int>("AuthorID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Birthday");
+
+                    b.Property<int?>("BookID");
 
                     b.Property<string>("Name");
 
                     b.HasKey("AuthorID");
+
+                    b.HasIndex("BookID");
 
                     b.ToTable("Authors");
                 });
@@ -39,8 +39,7 @@ namespace GoodBookNook.Migrations
             modelBuilder.Entity("GoodBookNook.Models.Book", b =>
                 {
                     b.Property<int>("BookID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("PubDate");
 
@@ -54,8 +53,7 @@ namespace GoodBookNook.Migrations
             modelBuilder.Entity("GoodBookNook.Models.Comment", b =>
                 {
                     b.Property<int>("CommentID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("CommentText");
 
@@ -75,8 +73,7 @@ namespace GoodBookNook.Migrations
             modelBuilder.Entity("GoodBookNook.Models.Review", b =>
                 {
                     b.Property<int>("ReviewID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("BookID");
 
@@ -96,8 +93,7 @@ namespace GoodBookNook.Migrations
             modelBuilder.Entity("GoodBookNook.Models.User", b =>
                 {
                     b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Email");
 
@@ -106,6 +102,13 @@ namespace GoodBookNook.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("GoodBookNook.Models.Author", b =>
+                {
+                    b.HasOne("GoodBookNook.Models.Book")
+                        .WithMany("Authors")
+                        .HasForeignKey("BookID");
                 });
 
             modelBuilder.Entity("GoodBookNook.Models.Comment", b =>

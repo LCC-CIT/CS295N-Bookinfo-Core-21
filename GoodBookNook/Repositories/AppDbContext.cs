@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GoodBookNook
 {
-    public class ApplicationDbContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public ApplicationDbContext(
-            DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public AppDbContext(
+            DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Review> Reviews { get; set; }

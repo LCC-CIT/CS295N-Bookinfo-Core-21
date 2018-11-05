@@ -31,13 +31,13 @@ namespace GoodBookNook
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                services.AddDbContext<ApplicationDbContext>(
+                services.AddDbContext<AppDbContext>(
                    options => options.UseSqlite(
                        Configuration["Data:GoodBookNook:SQLiteConnectionString"]));
             }
             else
             {
-                services.AddDbContext<ApplicationDbContext>(
+                services.AddDbContext<AppDbContext>(
                     options => options.UseSqlServer(
                        Configuration["Data:GoodBookNook:ConnectionString"]));
             }
@@ -71,6 +71,8 @@ namespace GoodBookNook
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.Seed(app);
         }
 
     }

@@ -1,16 +1,23 @@
 ﻿using GoodBookNook.Models;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoodBookNook.Repositories
 {
     public  class BookRepository : IBookRepository
     {
-        private ApplicationDbContext context;
-        private  List<Book> books = new List<Book>();
-        public  List<Book> Books { get { return books; } }
+        private AppDbContext context;
+        public  List<Book> Books 
+        { 
+            get 
+            {
+                var books = context.Books.Include("Authors").Include("Reviews");
+                return books.ToList<Book>(); 
+            }
+        }
 
-        public BookRepository(ApplicationDbContext ctx)
+        public BookRepository(AppDbContext ctx)
         {
             context = ctx;
         }
