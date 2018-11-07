@@ -55,8 +55,10 @@ namespace GoodBookNook.Controllers
                                                 string reviewText,
                                                 string reviewer)
         {
+
             Book book = repo.GetBookByTitle(title);
-            book.Reviews.Add(new Review() {
+            repo.AddReview(book,
+                new Review() {
                 Reviewer = new User() { Name = reviewer }, 
                 ReviewText = reviewText });
             return RedirectToAction("Index");

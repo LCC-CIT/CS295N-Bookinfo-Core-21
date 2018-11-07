@@ -12,7 +12,11 @@
     @foreach (Book book in Model)
     {
         <h2> @book.Title </h2>
-        @book.Authors[0].Name; <br />
+        @foreach (Author a in book.Authors)
+        {
+           @a.Name; <br />
+        }
+
         @book.PubDate; <br />
         <br />
         @if (book.Reviews.Count > 0)

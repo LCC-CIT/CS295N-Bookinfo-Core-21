@@ -21,6 +21,10 @@ namespace GoodBookNook.Repositories
             books.Add(book);
         }
 
+        public void AddReview(Book book, Review review)
+        {
+            //TODO finish this method
+        }
         public  Book GetBookByTitle(string title)
         {
             Book book = books.Find(b => b.Title == title);
