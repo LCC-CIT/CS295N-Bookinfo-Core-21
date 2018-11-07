@@ -15,6 +15,7 @@ namespace GoodBookNook.Controllers
             repo = r;
         }
 
+
         public IActionResult Index()
         {
             List<Book> books = repo.Books;
