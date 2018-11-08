@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using GoodBookNook.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,9 +34,25 @@ namespace GoodBookNook
             // Inject our repositories into our controllers
             services.AddTransient<IBookRepository, BookRepository>();
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-                Configuration["Data:GoodBookNook:ConnectionString"]));
-
+            var os = RuntimeInformation.OSArchitecture;
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                services.AddDbContext<AppDbContext>(
+                    options => options.UseSqlServer(
+                        Configuration.GetConnectionString("SqlServerConnection")));
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                services.AddDbContext<AppDbContext>(
+                   options => options.UseSqlite(
+                            Configuration.GetConnectionString("SQLiteConnectionString")));
+            }
+            else
+            {
+                services.AddDbContext<AppDbContext>(
+                    options => options.UseMySql(
+                        Configuration.GetConnectionString("MySqlConnection")));
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
