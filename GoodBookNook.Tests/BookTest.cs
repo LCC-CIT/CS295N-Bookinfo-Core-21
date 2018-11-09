@@ -23,5 +23,23 @@ namespace GoodBookNook.Tests
             Assert.Equal("A Tale of Two Cities",
                 repo.Books.Last().Title);
         }
+
+        [Fact]
+        public void AddReviewTest()
+        {
+            // Arrange
+
+            var repo = new FakeBookRepository();
+            var bookController = new BookController(repo);
+
+            // Act
+            const string TITLE = "The Fellowship of the Ring";
+            const string REVIEW = "This is a great classic!";
+            bookController.AddReview(TITLE, REVIEW, "Brian");
+
+            // Assert
+            Book book = repo.GetBookByTitle(TITLE);
+            Assert.Equal(REVIEW, book.Reviews.Last<Review>().ReviewText);
+        }
     }
 }

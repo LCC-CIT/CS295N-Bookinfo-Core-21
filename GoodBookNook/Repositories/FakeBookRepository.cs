@@ -17,13 +17,16 @@ namespace GoodBookNook.Repositories
 
         public  void AddBook(Book book)
         {
+            book.BookID = books.Count;
             books.Add(book);
         }
 
         public void AddReview(Book book, Review review)
         {
-            //TODO finish this method
+            Book theBook = books.First<Book>(b => b.BookID == book.BookID);
+            theBook.Reviews.Add(review);
         }
+
         public  Book GetBookByTitle(string title)
         {
             Book book = books.Find(b => b.Title == title);
