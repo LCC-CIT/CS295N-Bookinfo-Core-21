@@ -5,8 +5,6 @@ using System.Linq;
 
 namespace GoodBookNook.Repositories
 {
-    // This is class is temporary and just for testing.
-    // Ultimately, data will be stored in a database
     public  class FakeBookRepository : IBookRepository
     {
         private  List<Book> books = new List<Book>();
