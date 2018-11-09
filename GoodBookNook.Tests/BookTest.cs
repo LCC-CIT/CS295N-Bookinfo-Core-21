@@ -1,3 +1,4 @@
+using System.Linq;
 using GoodBookNook.Controllers;
 using GoodBookNook.Models;
 using GoodBookNook.Repositories;
@@ -17,9 +18,10 @@ namespace GoodBookNook.Tests
             // Act
             bookController.AddBook("A Tale of Two Cities",
                 "Charles Dickens", "1/1/1859");
+
             // Assert
             Assert.Equal("A Tale of Two Cities",
-                repo.Books[repo.Books.Count - 1].Title);
+                repo.Books.Last().Title);
         }
     }
 }

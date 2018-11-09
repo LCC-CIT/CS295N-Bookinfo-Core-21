@@ -1,6 +1,7 @@
 ﻿using GoodBookNook.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GoodBookNook.Repositories
 {
@@ -9,7 +10,7 @@ namespace GoodBookNook.Repositories
     public  class FakeBookRepository : IBookRepository
     {
         private  List<Book> books = new List<Book>();
-        public  List<Book> Books { get { return books; } }
+        public  IQueryable<Book> Books { get { return (IQueryable<Book>)books; } }
 
          public FakeBookRepository()
         {

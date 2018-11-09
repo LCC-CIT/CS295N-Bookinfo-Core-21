@@ -1,11 +1,11 @@
 using GoodBookNook.Models;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace GoodBookNook.Repositories
 {
     public interface IBookRepository
     {
-        List<Book> Books { get; }
+        IQueryable<Book> Books { get; }
         void AddBook(Book book);
         void AddReview(Book book, Review review);
         Book GetBookByTitle(string title);

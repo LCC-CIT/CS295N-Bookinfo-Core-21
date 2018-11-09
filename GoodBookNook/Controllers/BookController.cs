@@ -4,6 +4,7 @@ using GoodBookNook.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
 using GoodBookNook.Repositories;
+using System.Linq;
 
 namespace GoodBookNook.Controllers
 {
@@ -18,7 +19,7 @@ namespace GoodBookNook.Controllers
 
         public IActionResult Index()
         {
-            List<Book> books = repo.Books;
+            List<Book> books = repo.Books.ToList();
             books.Sort((b1, b2) => string.Compare(b1.Title, b2.Title, StringComparison.Ordinal));
             return View(books);
         }
