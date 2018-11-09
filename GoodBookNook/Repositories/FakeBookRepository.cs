@@ -8,7 +8,7 @@ namespace GoodBookNook.Repositories
     public  class FakeBookRepository : IBookRepository
     {
         private  List<Book> books = new List<Book>();
-        public  IQueryable<Book> Books { get { return (IQueryable<Book>)books; } }
+        public  IQueryable<Book> Books { get { return books.AsQueryable<Book>(); } }
 
          public FakeBookRepository()
         {
