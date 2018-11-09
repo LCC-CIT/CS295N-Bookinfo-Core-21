@@ -36,7 +36,8 @@ namespace GoodBookNook.Controllers
 
         [HttpPost]
         public RedirectToActionResult AddBook(string title,
-                                              string author, string pubDate)
+                                              string author, 
+                                              string pubDate)
         {
             Book book = new Book { Title = title };
             book.Authors.Add(new Author() { Name = author });
