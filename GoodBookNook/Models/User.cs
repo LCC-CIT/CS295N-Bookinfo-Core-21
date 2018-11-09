@@ -15,8 +15,8 @@ namespace GoodBookNook.Models
         public int UserID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public List<Review> Reviews {get { return reviews; } }
-        public List<Comment> Comments { get { return comments; } }
+        public ICollection<Review> Reviews {get { return reviews; } }
+        public ICollection<Comment> Comments { get { return comments; } }
 
     }
 }

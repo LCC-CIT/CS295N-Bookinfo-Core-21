@@ -14,7 +14,8 @@ namespace GoodBookNook.Models
         public string Title { get; set; }
         public DateTime PubDate { get; set; }
 
-        public List<Author> Authors { get { return authors; } }
-        public List<Review> Reviews { get { return reviews; } }
+        // ICollection is more flexible than List and can be modified. IEnumerable can't be modified
+        public ICollection<Author> Authors { get { return authors; } }
+        public ICollection<Review> Reviews { get { return reviews; } }
     }
 }
