@@ -1,4 +1,5 @@
 ﻿using GoodBookNook.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,9 @@ namespace GoodBookNook.Repositories
 {
     public class SeedData
     {
-        public static void Seed(IServiceProvider services)
-
+        public static void Seed(IApplicationBuilder app)
         {
-            AppDbContext context = services.GetRequiredService<AppDbContext>();
+            AppDbContext context = app.ApplicationServices.GetRequiredService<AppDbContext>();
             context.Database.EnsureCreated();
 
             if (!context.Books.Any())

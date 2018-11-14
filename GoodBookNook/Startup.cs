@@ -82,6 +82,7 @@ namespace GoodBookNook
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
+            SeedData.Seed(app);
          }
 
     }
