@@ -54,8 +54,6 @@ namespace GoodBookNook
                         Configuration.GetConnectionString("MySqlConnection")));
             }
 
-            SeedData.Seed(services);
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
