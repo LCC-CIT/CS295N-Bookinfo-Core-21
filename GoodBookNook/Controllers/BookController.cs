@@ -44,15 +44,14 @@ namespace GoodBookNook.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddBook(string title,
-                                              string author, 
-                                              string pubDate)
+        public RedirectToActionResult AddBook(Book book,
+                                              string author)
         {
-            Book book = new Book { Title = title };
-            book.Authors.Add(new Author() { Name = author });
-            book.PubDate = DateTime.Parse(pubDate);
-            repo.AddBook(book);  // this is temporary, in the future the data will go in a database
-            
+            if (ModelState.IsValid)
+            {
+                book.Authors.Add(new Author() { Name = author });
+                repo.AddBook(book);  
+            }
             return RedirectToAction("Index");
         }
 
