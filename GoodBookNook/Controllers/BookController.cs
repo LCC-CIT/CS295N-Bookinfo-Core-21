@@ -24,6 +24,15 @@ namespace GoodBookNook.Controllers
             return View(books);
         }
 
+        [HttpPost]
+        public IActionResult Index(string title)
+        {
+            List<Book> books = (from b in repo.Books
+                               where b.Title == title
+                               select b).ToList();
+            return View(books);
+        }
+
         public IActionResult AddBook()
         {
             return View();
@@ -65,5 +74,7 @@ namespace GoodBookNook.Controllers
                 ReviewText = reviewText });
             return RedirectToAction("Index");
         }
+
+
     }
 }
