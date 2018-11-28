@@ -17,6 +17,7 @@ namespace GoodBookNook.Repositories
 
             if (!context.Books.Any())
             {
+                // Book by Samuel Shellagarger
                 Author author = new Author { Name = "Samuel Shellabarger" };
                 context.Authors.Add(author);
 
@@ -37,7 +38,26 @@ namespace GoodBookNook.Repositories
                 };
                 book.Authors.Add(author);
                 book.Reviews.Add(review);
-                context.Books.Add(book);
+                context.Books.Add(book);   // add the book to the dB Context
+
+                // Books by J. R. R. Tolkien
+                author = new Author { Name = "J. R. R. Tolkien" };
+                context.Authors.Add(author);
+
+                Book book1 = new Book { Title = "Fellowship of the Ring", PubDate = DateTime.Parse("7/24/1954") }; // month/day/year
+                book1.Authors.Add(author);
+                context.Books.Add(book1); 
+
+                Book book2 = new Book { Title = "The Two Towers", PubDate = DateTime.Parse("1/1/1937") }; // month/day/year
+                book2.Authors.Add(author);
+                context.Books.Add(book2);   
+
+
+                Book book3 = new Book { Title = "The Return of the King", PubDate = DateTime.Parse("1/1/1937") }; // month/day/year
+
+                book3.Authors.Add(author); 
+                context.Books.Add(book3);   
+                // context.SaveChanges();      // save it so it gets an ID (PK value)
 
                 context.SaveChanges(); // save all the data
             }
