@@ -8,7 +8,12 @@ namespace GoodBookNook.Repositories
     {
         private AppDbContext context;
         // IQuerable objects can pass on a query to the Db instead of returing a colleciton that has to be filtered
-        public  IQueryable<Book> Books { get { return context.Books.Include("Authors").Include("Reviews"); } }
+        public  IQueryable<Book> Books {
+            get
+            {
+                return context.Books.Include("Authors").Include("Reviews");
+            }
+        }
 
          public BookRepository(AppDbContext appDbContext)
         {
