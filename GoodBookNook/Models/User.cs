@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace GoodBookNook.Models
 {
@@ -12,7 +9,6 @@ namespace GoodBookNook.Models
         private List<Review> reviews = new List<Review>();
         private List<Comment> comments = new List<Comment>();
 
-        public int UserID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public List<Review> Reviews {get { return reviews; } }
