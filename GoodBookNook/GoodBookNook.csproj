@@ -12,9 +12,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Models\Comment.cs" />
-    <Compile Remove="Models\Review.cs" />
-    <Compile Remove="Models\User.cs" />
-  </ItemGroup>
 </Project>

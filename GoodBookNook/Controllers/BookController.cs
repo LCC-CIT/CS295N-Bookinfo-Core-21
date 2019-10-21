@@ -37,6 +37,7 @@ namespace GoodBookNook.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public IActionResult AddReview(string title)
         {
             return View("AddReview", HttpUtility.HtmlDecode(title));
