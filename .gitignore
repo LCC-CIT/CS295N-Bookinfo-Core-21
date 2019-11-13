@@ -116,3 +116,4 @@ Temporary Items
 .vs/restore.dg
 *.user
 .vs/restore.dg
+/GoodBookNook/Properties/PublishProfiles/FolderProfile.pubxml
