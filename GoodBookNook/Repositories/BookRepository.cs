@@ -8,12 +8,15 @@ namespace GoodBookNook.Repositories
     // Ultimately, data will be stored in a database
     public  class BookRepository : IBookRepository
     {
-        private  List<Book> books = new List<Book>();
+        private static  List<Book> books = new List<Book>();
         public  List<Book> Books { get { return books; } }
 
          public BookRepository()
         {
-            AddTestData();
+            if (books.Count == 0)
+            {
+                AddSeedData();
+            }
         }
 
         public  void AddBook(Book book)
@@ -27,7 +30,7 @@ namespace GoodBookNook.Repositories
             return book;
         }
 
-        void AddTestData()
+        void AddSeedData()
         {
             Book book = new Book()
             {
