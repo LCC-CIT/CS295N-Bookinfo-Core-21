@@ -1,3 +1,5 @@
+using System;
+using System.Data;
 using System.Linq;
 using GoodBookNook.Controllers;
 using GoodBookNook.Models;
@@ -16,10 +18,10 @@ namespace GoodBookNook.Tests
             var bookController = new BookController(repo);
 
             // Act
-            bookController.AddBook("A Tale of Two Cities",
-                "Charles Dickens", "1/1/1859");
+            bookController.AddBook(new Book() {Title = "A Tale of Two Cities", PubDate = new DateTime(1859, 1, 1) },
+                "Charles Dickens");
 
-            // Assert
+        // Assert
             Assert.Equal("A Tale of Two Cities",
                 repo.Books.Last().Title);
         }
