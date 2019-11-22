@@ -28,14 +28,14 @@
             }
             <br />
         }
-        string url = "AddReview" + "?title=" + @book.Title;
+        string url = "/Book/AddReview" + "?title=" + @book.Title;
         <a href="@url">Add a review</a>
     }
 
     <br />
     <nav>
         <br />
-        <a href="AddBook">Add a book</a><br />
+        <a href="/Book/AddBook">Add a book</a><br />
         <a href="/Home">Home</a>
     </nav>
 </body>

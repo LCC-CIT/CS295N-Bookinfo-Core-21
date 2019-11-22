@@ -40,12 +40,12 @@ namespace GoodBookNook
             /*   // For Mac OS with SQLite
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlite(
-                    Configuration["ConnectionStrings:SQLiteConnection"]));
+                    Configuration["Data:GoodBookNook:SQLiteConnection"]));
 
                 // For Linux with MariaDB
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseMySql(
-                    Configuration.GetConnectionString("MySqlConnection")));
+                    Configuration.GetConnectionString("Data:GoodBookNook:MySqlConnection")));
             */
         }
 
