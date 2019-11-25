@@ -1,5 +1,4 @@
 ﻿using GoodBookNook.Models;
-using System;
 using System.Collections.Generic;
 
 namespace GoodBookNook.Repositories
@@ -22,6 +21,5 @@ namespace GoodBookNook.Repositories
             return book;
         }
 
-       
     }
 }
