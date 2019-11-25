@@ -33,20 +33,20 @@ namespace GoodBookNook
             // Inject our repositories into our controllers
             services.AddTransient<IBookRepository, BookRepository>();
 
-            // Configure EF for Windows with SQL Server
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-                Configuration["Data:GoodBookNook:ConnectionString"]));
-
-            /*   // For Mac OS with SQLite
-            services.AddDbContext<ApplicationDbContext>(
+            // For Mac OS with SQLite
+            services.AddDbContext<AppDbContext>(
                 options => options.UseSqlite(
-                    Configuration["ConnectionStrings:SQLiteConnection"]));
+                    Configuration["Data:GoodBookNook:SQLiteConnection"]));
 
-                // For Linux with MariaDB
-            services.AddDbContext<ApplicationDbContext>(
-                options => options.UseMySql(
-                    Configuration.GetConnectionString("MySqlConnection")));
-            */
+            /*   // Configure EF for Windows with SQL Server
+             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
+                 Configuration["Data:GoodBookNook:ConnectionString"]));
+
+                 // For Linux with MariaDB
+             services.AddDbContext<ApplicationDbContext>(
+                 options => options.UseMySql(
+                     Configuration.GetConnectionString("Data:GoodBookNook:MySqlConnection")));
+             */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
