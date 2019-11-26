@@ -35,17 +35,17 @@ namespace GoodBookNook
 
             // Configure EF for Windows with SQL Server
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-                Configuration["Data:GoodBookNook:ConnectionString"]));
+                Configuration["ConnectionStrings:LocalDbConnection"]));
 
             /*   // For Mac OS with SQLite
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlite(
-                    Configuration["Data:GoodBookNook:SQLiteConnection"]));
+                    Configuration["ConnectionStrings:SQLiteConnection"]));
 
                 // For Linux with MariaDB
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseMySql(
-                    Configuration.GetConnectionString("Data:GoodBookNook:MySqlConnection")));
+                    Configuration.GetConnectionString("ConnectionStrings:MySqlConnection")));
             */
         }
 
