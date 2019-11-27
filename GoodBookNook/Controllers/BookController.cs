@@ -15,7 +15,6 @@ namespace GoodBookNook.Controllers
             repo = r;
         }
 
-
         public IActionResult Index()
         {
             List<Book> books = repo.Books;
@@ -41,7 +40,7 @@ namespace GoodBookNook.Controllers
             book.Authors.Add(new Author() { Name = author });
             book.PubDate = DateTime.Parse(pubDate);
             repo.AddBook(book);  // this is temporary, in the future the data will go in a database
-            
+
             return RedirectToAction("Index");
         }
 
@@ -51,16 +50,16 @@ namespace GoodBookNook.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddReview(string title, 
+        public RedirectToActionResult AddReview(string title,
                                                 string reviewText,
                                                 string reviewer)
         {
-
             Book book = repo.GetBookByTitle(title);
-            repo.AddReview(book,
-                new Review() {
-                Reviewer = new User() { Name = reviewer }, 
-                ReviewText = reviewText });
+            book.Reviews.Add(new Review()
+            {
+                Reviewer = new User() { Name = reviewer },
+                ReviewText = reviewText
+            });
             return RedirectToAction("Index");
         }
     }

@@ -7,7 +7,6 @@ namespace GoodBookNook.Repositories
     {
         List<Book> Books { get; }
         void AddBook(Book book);
-        void AddReview(Book book, Review review);
         Book GetBookByTitle(string title);
     }
 }
