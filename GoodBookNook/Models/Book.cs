@@ -14,6 +14,9 @@ namespace GoodBookNook.Models
         public string Title { get; set; }
         public DateTime PubDate { get; set; }
 
+        // These are "navigational properties", they will
+        // cause EF to create FK fields for BookID
+        // in Author and Review tables.
         public List<Author> Authors { get { return authors; } }
         public List<Review> Reviews { get { return reviews; } }
     }
