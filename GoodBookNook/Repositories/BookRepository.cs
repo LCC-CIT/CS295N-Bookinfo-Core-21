@@ -8,6 +8,7 @@ namespace GoodBookNook.Repositories
     public  class BookRepository : IBookRepository
     {
         private AppDbContext context;
+        // Get the book + data from the associated dBSets using the EF Include method.
         public  List<Book> Books { get { return context.Books.Include("Authors").Include("Reviews").ToList(); } }
 
          public BookRepository(AppDbContext appDbContext)
