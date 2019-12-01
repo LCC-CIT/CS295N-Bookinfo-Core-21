@@ -60,6 +60,7 @@ namespace GoodBookNook.Controllers
                 Reviewer = new User() { Name = reviewer },
                 ReviewText = reviewText
             });
+            
             return RedirectToAction("Index");
         }
     }

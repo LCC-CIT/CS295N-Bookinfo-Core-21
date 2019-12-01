@@ -35,7 +35,7 @@ namespace GoodBookNook
 
             // Configure EF for Windows with SQL Server
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-                Configuration["ConnectionStrings:LocalDbConnection"]));
+                Configuration["ConnectionStrings:MsSqlConnection"]));
 
             /*   // For Mac OS with SQLite
             services.AddDbContext<ApplicationDbContext>(
@@ -50,7 +50,7 @@ namespace GoodBookNook
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AppDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -72,6 +72,12 @@ namespace GoodBookNook
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // Create or update the database and apply migrations.
+            context.Database.Migrate();
+
+            // Add a book and review or two as sample/test data.
+            SeedData.Seed(context);
         }
 
     }

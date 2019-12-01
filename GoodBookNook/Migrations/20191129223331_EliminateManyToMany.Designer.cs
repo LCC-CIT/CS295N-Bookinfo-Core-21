@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoodBookNook.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20181105195148_Initial")]
-    partial class Initial
+    [Migration("20191129223331_EliminateManyToMany")]
+    partial class EliminateManyToMany
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
+                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -122,7 +122,7 @@ namespace GoodBookNook.Migrations
             modelBuilder.Entity("GoodBookNook.Models.Comment", b =>
                 {
                     b.HasOne("GoodBookNook.Models.User", "UserName")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("UserNameUserID");
 
                     b.HasOne("GoodBookNook.Models.Review", "UserReview")
@@ -137,7 +137,7 @@ namespace GoodBookNook.Migrations
                         .HasForeignKey("BookID");
 
                     b.HasOne("GoodBookNook.Models.User", "Reviewer")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("ReviewerUserID");
                 });
 #pragma warning restore 612, 618
