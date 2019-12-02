@@ -35,7 +35,7 @@ namespace GoodBookNook
 
             // Configure EF for Windows with SQL Server
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-                Configuration["ConnectionStrings:LocalDbConnection"]));
+                Configuration["ConnectionStrings:MsSqlConnection"]));
 
             /*   // For Mac OS with SQLite
             services.AddDbContext<ApplicationDbContext>(
