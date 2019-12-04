@@ -1,7 +1,10 @@
-﻿namespace GoodBookNook.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace GoodBookNook.Models
 {
     public class Review
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ReviewID { get; set; }
         public string ReviewText { get; set; }
 

@@ -4,16 +4,14 @@ using GoodBookNook.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace GoodBookNook.Migrations
+namespace GoodBookNook.Migrations.Development
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191129223331_EliminateManyToMany")]
-    partial class EliminateManyToMany
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

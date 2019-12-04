@@ -1,10 +1,13 @@
-﻿namespace GoodBookNook.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace GoodBookNook.Models
 {
     public class User
     {
         /* private List<Review> reviews = new List<Review>();
         private List<Comment> comments = new List<Comment>();
         */
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }

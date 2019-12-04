@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace GoodBookNook.Migrations
+namespace GoodBookNook.Migrations.Development
 {
     public partial class Initial : Migration
     {

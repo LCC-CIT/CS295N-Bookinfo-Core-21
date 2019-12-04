@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace GoodBookNook.Migrations
+namespace GoodBookNook.Migrations.Development
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191129221940_Initial")]
+    [Migration("20191203212244_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -122,7 +122,7 @@ namespace GoodBookNook.Migrations
             modelBuilder.Entity("GoodBookNook.Models.Comment", b =>
                 {
                     b.HasOne("GoodBookNook.Models.User", "UserName")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("UserNameUserID");
 
                     b.HasOne("GoodBookNook.Models.Review", "UserReview")
@@ -137,7 +137,7 @@ namespace GoodBookNook.Migrations
                         .HasForeignKey("BookID");
 
                     b.HasOne("GoodBookNook.Models.User", "Reviewer")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("ReviewerUserID");
                 });
 #pragma warning restore 612, 618
