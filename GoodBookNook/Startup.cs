@@ -11,12 +11,14 @@ namespace GoodBookNook
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IHostingEnvironment environment;
+        public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            environment = env;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,21 +35,26 @@ namespace GoodBookNook
             // Inject our repositories into our controllers
             services.AddTransient<IBookRepository, BookRepository>();
 
-            // Configure EF for Windows with SQL Server
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-                Configuration["ConnectionStrings:MsSqlConnection"]));
+            // We're assuming your developmnet machine uses SQL Server
+            // and your production platform uses MySQL or MariaDb
+            if (environment.IsDevelopment())
+            {
+                services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
+                    Configuration["ConnectionStrings:MsSqlConnection"]));
+            }
+            else if (environment.IsProduction())
+            {
+                services.AddDbContext<AppDbContext>(options => options.UseMySql(
+                    Configuration["ConnectionStrings:MySqlConnection"]));
+            }
 
             /*   // For Mac OS with SQLite
-            services.AddDbContext<ApplicationDbContext>(
+            services.AddDbContext<AppDbContext>(
                 options => options.UseSqlite(
                     Configuration["ConnectionStrings:SQLiteConnection"]));
-
-                // For Linux with MariaDB
-            services.AddDbContext<ApplicationDbContext>(
-                options => options.UseMySql(
-                    Configuration.GetConnectionString("ConnectionStrings:MySqlConnection")));
             */
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, AppDbContext context)
