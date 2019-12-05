@@ -105,3 +105,8 @@ namespace GoodBookNook
 
     }
 }
+
+/* Use these CLI commands in Windows Powershell to create the migrations:
+ * $env:ASPNETCORE_ENVIRONMENT = "Development"
+ * dotnet ef migrations add MsSQL --output-dir Migrations/Development
+ */
