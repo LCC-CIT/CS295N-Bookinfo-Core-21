@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace GoodBookNook
 {
@@ -46,6 +49,9 @@ namespace GoodBookNook
             {
                 services.AddDbContext<AppDbContext>(options => options.UseMySql(
                     Configuration["ConnectionStrings:MySqlConnection"]));
+            } else
+            {
+                throw new Exception("Incorrect environment specified by ASPNETCORE_ENVIRONMENT");
             }
 
             /*   // For Mac OS with SQLite
@@ -81,8 +87,18 @@ namespace GoodBookNook
             });
 
             // Create or update the database and apply migrations.
-            context.Database.Migrate();
-
+            IMigrator migrator = context.GetInfrastructure().GetService<IMigrator>();
+            if (env.IsDevelopment())
+            {
+                migrator.Migrate("20191205212333_MsSQL");
+            } else if (env.IsProduction())
+            {
+                migrator.Migrate("20191205210121_MySQL");
+            } else
+            {
+                migrator.Migrate();
+            }
+         
             // Add a book and review or two as sample/test data.
             SeedData.Seed(context);
         }
