@@ -14,5 +14,10 @@ namespace GoodBookNook.Models
         {
             books.Add(book);
         }
+
+        public static Book GetBookByTitle(string title)
+        {
+            return books.Find(b => b.Title == title);
+        }
     }
 }

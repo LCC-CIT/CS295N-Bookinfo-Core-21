@@ -10,6 +10,7 @@ namespace GoodBookNook.Models
 
         public string Title { get; set; }
         public DateTime PubDate { get; set; }
+        public Author Author { get; set; }
 
         public List<Author> Authors { get { return authors; } }
         public List<Review> Reviews { get { return reviews; } }

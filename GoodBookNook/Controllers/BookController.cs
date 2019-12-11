@@ -18,18 +18,21 @@ namespace GoodBookNook.Controllers
                     Title = "The Fellowship of the Ring",
                     PubDate = new DateTime(1937, 1, 1)
                 };
-                book.Authors.Add(new Author
+                book.Author = new Author
                 {
                     Name = "J.R.R. Tolkein"
-                }
-                );
+                };
+                
                 BookRepository.AddBook(book);
             }
         }
 
         public IActionResult Index()
         {
-            List<Book> books = BookRepository.Books;
+            // List<Book> books = BookRepository.Books;
+            List<Book> books = new List<Book>();
+            book = BookRepository.GetBookByTitle("The Fellowship of the Ring");
+            books.Add(book);
             return View(books);
         }
 
