@@ -1,4 +1,4 @@
-﻿@model List<Book>
+﻿@model Book
 @{
     Layout = null;
 }
@@ -8,14 +8,12 @@
     <title>Books and Reviews</title>
 </head>
 <body>
-    List of books:
-    @foreach (Book book in Model)
-    {
-        @book.Title; <br />
-        @book.Author.Name; <br />
-        @book.PubDate; <br />
+    
+        @Model.Title; <br />
+        @Model.Author.Name; <br />
+        @Model.PubDate; <br />
         <br />
-    }
+
     <br>
     <p>No reviews yet</p>
     <a href="AddBook">Add a book</a><br />

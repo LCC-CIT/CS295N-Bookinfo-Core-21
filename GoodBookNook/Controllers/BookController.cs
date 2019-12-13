@@ -30,10 +30,10 @@ namespace GoodBookNook.Controllers
         public IActionResult Index()
         {
             // List<Book> books = BookRepository.Books;
-            List<Book> books = new List<Book>();
+            //List<Book> books = new List<Book>();
             book = BookRepository.GetBookByTitle("The Fellowship of the Ring");
-            books.Add(book);
-            return View(books);
+           // books.Add(book);
+            return View(book);
         }
 
         public IActionResult AddBook()
