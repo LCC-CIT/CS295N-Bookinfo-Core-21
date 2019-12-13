@@ -10,7 +10,7 @@ namespace GoodBookNook.Models
         public int ReviewID { get; set; }
         public string ReviewText { get; set; }
 
-        // EF to generate a FK field, ReviewUserID, in the Review table?
+        // EF to generate a FK field, ReviewUserID, in the Review table
         public User Reviewer { get; set; }
     }
 }
