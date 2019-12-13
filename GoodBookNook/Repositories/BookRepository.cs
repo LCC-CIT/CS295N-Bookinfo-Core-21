@@ -9,9 +9,13 @@ namespace GoodBookNook.Repositories
     {
         private AppDbContext context;
         // Get all books + associated data by using the EF Include method.
-        public  List<Book> Books { get { return context.Books.Include("Authors").Include("Reviews").ToList(); } }
+        public List<Book> Books { get { return context.Books.Include(book => book.Authors)
+            .Include(book => book.Reviews).ThenInclude(review => review.Reviewer).ToList(); } }
+        // We needed to use the EF ThenInclude method to get Reviewer. 
+        // We had to use the overload of Include that uses lambda expressions
+        // rather than the one that uses strings in order to use ThenInclude.
 
-         public BookRepository(AppDbContext appDbContext)
+        public BookRepository(AppDbContext appDbContext)
         {
             context = appDbContext;
         }

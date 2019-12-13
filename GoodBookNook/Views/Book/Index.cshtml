@@ -24,8 +24,8 @@
             <h3>Reviews</h3>
             @foreach (Review r in book.Reviews)
             {
-                @r.ReviewText <br />
-                @r.Reviewer <br />
+                @r.ReviewText <br>
+                @: by:  @r.Reviewer.Name <br><br>
             }
             <br />
         }

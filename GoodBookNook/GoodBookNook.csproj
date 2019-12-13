@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20181105195148_Initial.cs" />
+    <Compile Remove="Migrations\20181105195148_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191213220537_Intial.cs" />
+    <Compile Remove="Migrations\20191213220537_Intial.Designer.cs" />
+    <Compile Remove="Migrations\20191213221041_Initil.cs" />
+    <Compile Remove="Migrations\20191213221041_Initil.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App">
       <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
       <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
