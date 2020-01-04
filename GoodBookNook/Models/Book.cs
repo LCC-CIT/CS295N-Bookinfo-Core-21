@@ -13,7 +13,9 @@ namespace GoodBookNook.Models
         [StringLength(100, MinimumLength = 2)]  
         [Required]
         public string Title { get; set; }
-        // TODO: format this property to just display year
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
         public DateTime PubDate { get; set; }
 
         // ICollection is more flexible than List and can be modified. IEnumerable can't be modified
