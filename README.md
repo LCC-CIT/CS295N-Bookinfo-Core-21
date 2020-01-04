@@ -10,11 +10,10 @@ This web app was written to demonstrate key concepts in development of ASP.NET C
 7. EF-SeedData: Added code to seed the database
 8. EF-MS+MySQL: Modified Startup to use different database providers depending on the environment MSSQL for development and MySQL for production.
 9. Linq: More examples of using LINQ.
-10. Validation: Added validation to the models and controller methods.
-
+10. [Validation](docs/Validation.md): Added validation to approriate models and controller methods.
 
 
 ----
 
-This demo was written by [Brian Bird](https://profbird.online for CS295N, Web Development 1: ASP.NET, at Lane Community College.
+This demo was written by [Brian Bird](https://profbird.online) for CS295N, Web Development 1: ASP.NET, at Lane Community College.
 
