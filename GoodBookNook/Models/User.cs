@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace GoodBookNook.Models
 {
@@ -17,6 +14,5 @@ namespace GoodBookNook.Models
         public string Email { get; set; }
         public ICollection<Review> Reviews {get { return reviews; } }
         public ICollection<Comment> Comments { get { return comments; } }
-
     }
 }
