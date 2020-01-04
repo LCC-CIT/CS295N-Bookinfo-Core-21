@@ -15,5 +15,5 @@ This web app was written to demonstrate key concepts in development of ASP.NET C
 
 ----
 
-This demo was written by [Brian Bird](https://profbird.online for CS295N, Web Development 1: ASP.NET, at Lane Community College.
+This demo was written by [Brian Bird](https://profbird.online) for CS295N, Web Development 1: ASP.NET, at Lane Community College.
 
