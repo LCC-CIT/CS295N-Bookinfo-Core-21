@@ -10,7 +10,7 @@ Each of the following branches demonstrates a concept or technique:
 5. UnitTests: Added fake repositories and unit tests.
 6. EF: Added EntityFramework and a database
 7. EF-SeedData: Added code to seed the database
-8. EF-MS+MySQL: Modified Startup to use different database providers depending on the environment MSSQL for development and MySQL for production.
+8. EF-MS+MySQL: Modified Startup to use different database providers depending on the environment: MSSQL for development and MySQL for production.
 9. Linq: More examples of using LINQ.
 10. Validation: Added validation to the models and controller methods.
 
